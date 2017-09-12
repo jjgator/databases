@@ -17,10 +17,10 @@ exports.connect = function () {
   });
 };
 
-exports.query = function (queryString) {
+exports.query = function (queryString, callback) {
   return dbConnection.query(queryString, function(err, results) {
-    if (err) throw err;
-    return results;
+    if (err) callback(err);
+    callback(null, results);
   });
 }
 
