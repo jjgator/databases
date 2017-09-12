@@ -6,7 +6,10 @@ module.exports = {
       queryString = 'SELECT * FROM messages';
       db.query(queryString, callback);
     }, // a function which produces all the messages
-    post: function () {} // a function which can be used to insert a message into the database
+    post: function () {
+      //queryString = 'INSERT INTO messages (message, username, roomname) VALUES ()'
+      //db.query()
+    } // a function which can be used to insert a message into the database
   },
 
   users: {

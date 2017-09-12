@@ -17,6 +17,5 @@ dbConnection.connect(function(err) {
 
 dbConnection.query('SELECT * FROM messages', function(err, results) {
   if (err) throw err;
-  console.log(results[0].message, 'Hi I worked');
   return results;
 });
