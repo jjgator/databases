@@ -37,12 +37,13 @@ var app = {
 
   send: function(message) {
     app.startSpinner();
-
+    console.log('message before ajax request: ', message);
     // POST the message to the server
     $.ajax({
       url: app.server,
       type: 'POST',
-      data: message,
+      data: JSON.stringify(message),
+      headers: { 'Content-Type': 'application/json' },
       success: function (data) {
         // Clear messages input
         app.$message.val('');
@@ -64,7 +65,6 @@ var app = {
       success: function(data) {
         // Don't bother if we have nothing to work with
         // if (!data.results || !data.results.length) { return; }
-        console.log(data);
         // Store messages for caching later
         data = JSON.parse(data);
         app.messages = data;
@@ -118,7 +118,6 @@ var app = {
     app.$roomSelect.html('<option value="__newRoom">New room...</option>');
 
     if (messages) {
-      console.log('messages inside render room: ',messages);
       var rooms = {};
       messages.forEach(function(message) {
         var roomname = message.roomname;
@@ -215,7 +214,7 @@ var app = {
   handleSubmit: function(event) {
     var message = {
       username: app.username,
-      text: app.$message.val(),
+      message: app.$message.val(),
       roomname: app.roomname || 'lobby'
     };
 

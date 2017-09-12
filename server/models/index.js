@@ -6,9 +6,11 @@ module.exports = {
       queryString = 'SELECT * FROM messages';
       db.query(queryString, callback);
     }, // a function which produces all the messages
-    post: function () {
-      //queryString = 'INSERT INTO messages (message, username, roomname) VALUES ()'
-      //db.query()
+    post: function (data, callback) {
+      var test = "'" + data.message + "'" + ", '" + data.username + "','" + data.roomname + "')";
+      console.log(test);
+      queryString = "INSERT INTO messages (message, username, roomname) VALUES (" + test;      //db.query()
+      db.query(queryString, callback);
     } // a function which can be used to insert a message into the database
   },
 

@@ -8,14 +8,18 @@ module.exports = {
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      console.log('request body: ', req);
-      //models.messages.post(function (req.body) {});
+      console.log('request: ', req.body);
+      models.messages.post(req.body, function(err, results) {
+        console.log('Posted to database.');
+        //fill in later
+      });
+      res.end();
     } // a function which handles posting a message to the database
   },
 
   users: {
     // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {}
+    get: function (req, res) { res.end();},
+    post: function (req, res) { res.end();}
   }
 };
