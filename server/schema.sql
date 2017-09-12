@@ -17,10 +17,8 @@ CREATE TABLE users (
 CREATE TABLE messages (
   id int NOT NULL AUTO_INCREMENT,
   message varchar(300),
-  user_id int,
-  room_id int,
-  FOREIGN KEY (room_id) REFERENCES rooms (id),
-  FOREIGN KEY (user_id) REFERENCES users (id),
+  user varchar(30),
+  room varchar(30),
   PRIMARY KEY (id)
 );
 

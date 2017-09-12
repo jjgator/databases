@@ -18,10 +18,10 @@ exports.connect = function () {
 };
 
 exports.query = function (queryString) {
-  dbConnection.query(queryString, function(err, results) {
+  return dbConnection.query(queryString, function(err, results) {
     if (err) throw err;
     return results;
   });
 }
 
-module.exports = mysql;
+db = module.exports;
